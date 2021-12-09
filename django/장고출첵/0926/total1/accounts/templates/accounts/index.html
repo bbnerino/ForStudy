@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>INDEX</h1>
+  {% for user in users %}
+    <p>{{user.pk}}</p>
+    <p>아이디 : {{user.username}}</p>
+    <p>이름: {{user.first_name}}</p>
+    <p>email: {{user.email}}</p>
+  {% empty %}
+    <p>유저가 없어요</p>
+  {% endfor %}
+  <a href="{% url 'accounts:password_change' %}">비밀번호 변경</a>
+  <a href="{% url 'accounts:update' %}">내 정보 변경 </a>
+
+{% endblock content %}

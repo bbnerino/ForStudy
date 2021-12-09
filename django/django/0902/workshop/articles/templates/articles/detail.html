@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block contents %}
+  <h1>Detail Page</h1>
+  <p> {{article.pk}}번째 글 </p>
+  <p>제목: {{article.title}}</p>
+  <p>내용: {{article.content}}</p>
+  <p>작성시간: {{article.created_at|naturalday}}</p>
+  <p>수정시간: {{article.updated_at|naturaltime}}</p>
+  <hr>
+  <a href=" {% url 'articles:edit' article.pk %}" class="btn btn-primary">EDIT</a>
+
+  <form action="{% url 'articles:delete' article.pk  %}" method="POST">
+    {% csrf_token %}
+    {% comment %} <input type="submit" value="DELETE" class="btn btn-danger"> {% endcomment %}
+    <button class="btn btn-danger">delete</button>
+  </form>
+{% endblock contents %}

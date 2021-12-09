@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+  {% for i in dinners %}
+      <p>{{i}}</p>
+  {% endfor %}
+
+  <p>중에서 </p>
+
+  {% if id == '임현홍' %}
+    <h3>오늘 {{id}}님의</h3>
+    <p> 저녁식사는 {{food}}입니다 </p>
+  {% else %}
+    <p> 로그인을 못하는 당신은 아무거도 못먹습니다. </p>
+  {% endif %}
+  
+
+{% endblock contents %}

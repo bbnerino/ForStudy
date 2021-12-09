@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>INDEX</h1>
+  {% for movie in movies %}
+    <a href="{% url 'articles:detail' movie.pk %}"> {{movie.title }}</a>
+    <p> {{movie.comment }}</p>
+    <p>{{movie.rating}}</p>
+    <hr>
+  {% empty %}
+    <p> 내용을 입력해주세요 </p>
+  {% endfor %}
+{% endblock content %}
+

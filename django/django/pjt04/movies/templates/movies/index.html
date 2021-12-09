@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>INDEX</h1>  
+  {% for movie in movies %}
+    <a href="{% url 'movies:detail' movie.pk %}">
+      <p>{{forloop.counter}}번 제목: {{movie.title}} </p>
+    </a>
+
+    <hr>
+  {% empty %}
+    <p> 게시글이 없습니다. </p>
+    <hr>
+  {% endfor %}
+
+{% endblock content %}

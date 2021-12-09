@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>DETAIL PAGE </h1>
+   {{ movie.pk }}
+   <p>영화 제목 : {{movie.movie_title}}</p>
+   <p>리뷰 : {{movie.title}}</p>
+   <p>순위 : {{movie.rank}}</p>
+   <p>내용 : {{movie.content}}</p>
+
+   <a href="{% url 'community:update' movie.pk %}">UPDATE</a>
+   <form action="{% url 'community:delete' movie.pk %}" method='POST'>
+    {% csrf_token %}
+    <input type="submit" value='delete'>
+   </form>
+   <a href="{% url 'community:index' %}">BACK</a>
+  
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1> DETAIL PAGE</h1>
+  <p>{{ movie.pk}}번째 게시글</p>
+  <p>{{ movie.title}}</p>
+  <p>{{ movie.content}}</p>
+  <p>{{ movie.rating}}</p>
+  <form action="{% url 'community:delete' movie.pk %}" method='POST'>
+    {% csrf_token %}
+    <button>DELETE</button>
+  </form>
+  <form action="{% url 'community:update' movie.pk %}" method="POST">
+    {% csrf_token %}
+    <button>UPDATE</button>
+  </form>
+  
+{% endblock content %}

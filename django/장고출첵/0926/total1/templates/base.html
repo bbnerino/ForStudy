@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  {% if request.user.is_authenticated %}
+    <h3 style='color:orange'> {{user}}님 </h3>
+    <form action="{% url 'accounts:logout' %}" method='POST'>
+    <a href="{% url 'accounts:index' %}">유저목록</a>
+      {% csrf_token %}
+      <button>LOGOUT</button>
+    </form>
+  {% else %}
+    <a href="{% url 'accounts:signup' %}">SIGN-UP</a>
+    <a href="{% url 'accounts:login' %}">LOG-IN</a>
+  {% endif %}
+  <p></p>
+  <a href="{% url 'articles:create' %}">CREATE</a>
+  <a href="{% url 'articles:index' %}">INDEX</a>
+  {% block content %}
+  {% endblock content %}
+  
+</body>
+</html>

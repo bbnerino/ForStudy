@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+  <a href="{% url 'community:create' %}" > 사람 추가하기 </a>
+  <h1>index page</h1>
+  <hr>
+  {% for person in persons %}
+    <p>{{ person.name }}</p>
+    <p>{{ person.age }}</p>
+    <p>{{ person.address }}</p>
+    <a href="{% url 'community:update' person.pk %}">수정하기</a>
+    <hr>
+    {% empty %}
+    <a href="{% url 'community:create' %}">내용을 입력해주세요</a>
+  {% endfor %}
+{% endblock content %}

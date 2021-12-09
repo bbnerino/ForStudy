@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h3>{{ movie.title }}</h3>
+  <p>{{movie.comment}}</p>
+  <p>{{movie.rating}}</p>
+  <p>{{movie.created_at}}</p>
+  <p>{{movie.updated_at}}</p>
+  <a href="{% url 'articles:update' movie.pk %}">UPDATE</a>
+  <form action="{% url 'articles:delete' movie.pk %}" method='POST'>
+    {% csrf_token %}
+    <button>DELETE</button>
+  </form>
+{% endblock content %}
+
+

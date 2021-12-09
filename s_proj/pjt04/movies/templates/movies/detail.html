@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+  <header class="d-flex align-items-center justify-content-between pt-5">
+    <div><a href="{% url 'movies:index' %}" class="btn btn-outline-dark fw-bold">❮</a></div>
+    <div class="fw-bolder">
+      <h1>{{movie.title}}</h1>
+    </div>
+    <div class="fst-italic text-muted">
+      생성한 날짜: {{movie.created_at|naturalday}}<br> 마지막 수정한 시간: {{movie.updated_at|naturaltime}}
+    </div>
+  </header>
+  <hr>
+  <article class="col-12 pt-2">
+    <img src="{{movie.poster_path}}" alt="{{movie.title}} 포스터" class="img-fluid float-start m-2 mx-4" style="max-width: 40%;">
+    <p class="lh-lg">{{ movie.overview }}</p>
+  </article>
+
+  <footer class="fixed-bottom bg-white py-3 border-top row">
+    <form action="{% url 'movies:delete' movie.pk %}" method="POST" class="offset-7 col-2 d-grid ms-auto">
+      {% csrf_token %}
+      <button class="btn btn-danger d-grid">DELETE</button> 
+    </form>
+    <div class="col-2 me-3"><a href="{% url 'movies:edit' movie.pk %}" class="btn btn-success d-grid">EDIT</a></div>
+  </footer>
+{% endblock content %}

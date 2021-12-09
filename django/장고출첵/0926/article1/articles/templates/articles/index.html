@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% for movie in movies %}
+    <h3>제목: {{movie.title}}</h3>
+    <p>평점: {{movie.rating}}</p>
+    <a href="{% url 'articles:update' movie.pk %}">수정</a>
+    <hr>
+    {% empty %}
+    <h1>내용이 없습니다</h1>
+  {% endfor %}
+{% endblock content %}

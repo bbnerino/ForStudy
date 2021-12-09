@@ -1,0 +1,24 @@
+<!-- templates/base.html -> settings.py에 TEMPLATES.DIR 설정 -->
+{% extends 'base.html' %}
+{% block title %}
+  INDEX
+{% endblock title %}
+
+{% block content %}
+  <h1>INDEX PAGE</h1>
+  <!--경로 : app_name:pattern_name-->
+  <!-- /articles/create/-->
+  <a href="{% url 'articles:create' %}">CREATE</a>
+  {% for article in articles %}
+    <p>{{ article.pk }}번 째</p>
+    <!-- variable routing의 각변수에 해당하는 값들은-->
+    <!-- html에서 공백을 기준으로 첫번째 변수부터 값을 채워 넣는다-->
+    <!-- /articles/<int:pk>/ -->
+    <a href="{% url 'articles:detail' article.pk %}">
+      <p>{{ article.title }}</p>
+    </a>
+    <hr>
+  {% empty %}
+    <p>현재 게시글이 없습니다.</p>
+  {% endfor %}
+{% endblock content %}

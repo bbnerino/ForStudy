@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+<p>create</p>
+{% for article in articles %}
+<p>제목{{article.title}}</p>
+<p>내용{{article.content}}</p>
+
+{% endfor %}
+{% endblock contents %}

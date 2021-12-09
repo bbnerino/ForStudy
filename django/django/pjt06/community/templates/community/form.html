@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  
+  {% if request.resolver_match.url_name == "create" %}
+    <h1>CREATE PAGE</h1>
+    
+  {% else %}
+    <h1>UPDATE PAGE</h1>
+  {% endif %}
+
+    <form action="" method='POST'>
+      {% csrf_token %}
+      {{form.as_p}}
+      <input type="submit">
+    </form>
+
+
+  <a href="{% url 'community:index' %}">BACK</a>
+{% endblock content %}

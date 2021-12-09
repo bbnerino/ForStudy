@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block title %}
+  DETAIL
+{% endblock title %}
+{% block content %}
+  <h1>DETAIL PAGE</h1>
+  <p>{{ article.pk }}번째 글</p>
+  <p>제목 : {{ article.title }}</p>
+  <!-- article 로 출력하면 안되나? 되긴 하지만 명확하게 해주자-->
+  {% comment %} <p>제목?: {{ article }}</p> {% endcomment %}
+  <p>내용 : {{ article.content }}</p>
+  <!-- <img src="www.ssafy.com/" alt=""> -->
+  {% if article.image %}
+  <p>{{ article.image.url }}</p>
+  <img src="{{article.image.url}}" alt="{{article.image}}">  
+  {% endif %}
+  <p>생성시간:{{ article.created_at}}</p>
+  <p>수정시간:{{ article.updated_at}}</p>
+  <a href="{% url 'articles:update' article.pk %}">UPDATE</a>
+  <form action="{% url 'articles:detail' article.pk %}"  method="POST">
+    {% csrf_token %}
+    {% bootstrap_button "Delete" button_type="submit" button_class="btn-primary" %}
+  </form>
+{% endblock content %}

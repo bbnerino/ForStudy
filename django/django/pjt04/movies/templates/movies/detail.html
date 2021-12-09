@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+  <h1>DETAIL</h1>
+  <p>제목: {{movie.title}}</p>
+  <p>줄거리: {{movie.overview}}</p>
+  <p>포스터경로: {{movie.poster_path}}</p>
+  <p>생성시간: {{movie.created_at|naturalday}} </p>
+  <p>수정시간: {{movie.updated_at|naturaltime}} </p>
+
+  <a href="{% url 'movies:index' %}"> back</a>
+  <form action="{% url 'movies:delete' movie.pk %}" method="POST">
+    {% csrf_token %}
+    <button>삭제</button> 
+  </form>
+  
+
+{% endblock content %}

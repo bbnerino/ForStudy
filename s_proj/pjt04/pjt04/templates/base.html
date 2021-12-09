@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <title>Movie board</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container-fluid">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center">
+        <li class="nav-item ms-3">
+          <img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fstyles.redditmedia.com%2Ft5_k7s1x%2Fstyles%2FprofileIcon_15bk1yg9sye11.jpg%3Fwidth%3D256%26height%3D256%26crop%3D256%3A256%2Csmart%26s%3D1f0ef69ee9c0455c8b710adbe1587f57eab63eed&type=sc960_832" alt="" width="50">
+        </li>
+        <li class="nav-item ms-3">
+           <a href="{% url 'movies:index' %}" class="nav-link text-white">INDEX</a>
+        </li>
+        <li class="nav-item ms-3">
+        <a href="{% url 'movies:new' %}" class="nav-link text-white">NEW</a>
+       </li>
+    </ul>
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-light" type="reset">Search</button>
+    </form>
+  </div>
+  </nav>
+
+  <div class="container pb-5">
+    {% block content %}
+    {% endblock content %}
+  </div>
+
+  {% if messages %}
+    {% for message in messages %}
+      {{ message.tags }}
+      {{ message.message }}
+    {% endfor %}
+  {% endif %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+</html>

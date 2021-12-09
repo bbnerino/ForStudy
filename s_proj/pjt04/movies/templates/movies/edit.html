@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="py-4 text-center">
+    <h1>EDIT</h1>
+    <hr>
+  </div>
+  <article class="pt-2">
+    <form action="{% url 'movies:update' movie.pk %}" method="POST" class="row g-4">
+    {% csrf_token %}
+      <div class="offset-1 col-10 fw-bold fs-3">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" class="form-control form-control-lg" required="True" value="{{ movie.title }}">
+      </div>
+      <div class="offset-1 col-10 fw-bold fs-4">
+        <label for="overview">Overview</label>
+        <textarea name="overview" id="overview"  class="form-control" rows="15" required="True">{{ movie.overview }}</textarea>
+      </div>
+      <div class="offset-1 col-10 fw-bold fs-5">
+        <label for="poster_path">Poster Path</label>
+        <input type="text" id="poster_path" name="poster_path" class="form-control" value="{{ movie.poster_path }}">
+      </div>
+      <footer class="fixed-bottom bg-white py-3 border-top row">
+        <a href="{% url 'movies:index' %}" class="btn btn-dark col-1 ms-5 me-3">BACK</a>
+        <button type="reset" class="btn btn-warning col-1 me-4">RESET</button>
+        <button class="btn btn-success offset-5 col-4">UPDATE</button>
+      </footer>
+    </form>
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}INDEX{% endblock title %}
+{% block content %}
+  <h1>INDEX PAGE</h1>
+  <hr>
+  <a href="{% url 'community:create' %}">[새 글 작성]</a>
+  <hr>
+  {% for movie in movies %}
+    <p> 영화 이름: {{movie.movie_title}}</p>
+    <p> 리뷰제목 : {{movie.title}}</p>
+    <p> 평점 : {{movie.rank}}</p>
+    <p> 리뷰내용 : {{movie.content}}</p>
+    <a href="{% url 'community:detail' movie.pk %}" >[DETAIL]</a>
+    <hr>
+  {% empty%}
+    <p> 게시글을 입력해주세요</p>
+  {% endfor %}
+  
+{% endblock content %}
+
+

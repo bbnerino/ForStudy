@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>INDEX</h1>
+  {% for user in users %}
+    <p>{{user.pk}}</p>
+    <p>{{user.username}}</p>
+    <p>{{user.email}}</p>
+    <hr>
+    
+  {%empty%}
+    <p>아직 유저가 없어요</p>
+  {% endfor %}
+{% endblock content %}

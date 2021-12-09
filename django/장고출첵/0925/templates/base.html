@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  {% if reqeuest.user.is_authenticated %}
+  <h1>{{user.username}}님</h1>
+  {% endif %}
+  <a href="{% url 'community:create' %}">CREATE</a>
+  <a href="{% url 'community:index' %}">INDEX</a>
+  <a href="{% url 'accounts:signup' %}">SIGNUP</a>
+  <a href="{% url 'accounts:login' %}">LOGIN</a>
+  <a href="{% url 'accounts:logout' %}">LOGOUT</a>
+  {% block content %}
+  {% endblock content %}
+  
+</body>
+</html>

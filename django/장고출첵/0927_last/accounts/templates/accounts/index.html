@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>INDEX</h1>
+  {% for user in users %}
+    <p>{{user.username}}</p>
+    <p>{{user.email}}</p>
+    <p>{{user.first_name}}</p>
+    <p>{{user.last_name}}</p>
+  {% empty %}
+    <p> 사람이 없습니다.</p>
+  {% endfor %}
+  {% if request.user.is_authenitcated %}
+    <h1>{{user.username}}</h1>
+    <a href="{% url 'accounts:update' %}">내 정보수정</a>
+    <a href="{% url 'accounts:change_password' %}">비밀번호 변경</a>
+    <form action="{% url 'accounts:delete' %}" method='POST'>
+      {% csrf_token %}
+      <input type="submit" value="내 정보 삭제">
+    </form>
+    {% else %}
+
+  {% endif %}
+{% endblock content %}

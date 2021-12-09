@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="py-4 text-center">
+    <h1>NEW</h1>
+    <hr>
+  </div>
+  <article class="pt-2">
+    <form action="{% url 'movies:create' %}" method="POST" class="row g-4">
+    {% csrf_token %}
+      <div class="offset-1 col-10 fw-bold fs-3">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" class="form-control form-control-lg" placeholder="영화 제목을 입력하세요." required="True">
+      </div>
+      <div class="offset-1 col-10 fw-bold fs-4">
+        <label for="overview">Overview</label>
+        <textarea name="overview" id="overview"  class="form-control" placeholder="영화 줄거리를 입력하세요." rows="15" required="True"></textarea>
+      </div>
+      <div class="offset-1 col-10 fw-bold fs-5">
+        <label for="poster_path">Poster Path</label>
+        <input type="text" id="poster_path" name="poster_path" class="form-control" placeholder="포스터 이미지 경로를 입력하세요.">
+      </div>
+      <footer class="fixed-bottom py-3 border-top row bg-white">
+        <a href="{% url 'movies:index' %}" class="btn btn-dark col-1 ms-5 me-3">BACK</a>
+        <button type="reset" class="btn btn-warning col-1 me-4">RESET</button>
+        <button class="btn btn-primary offset-5 col-4">SUBMIT</button>
+      </footer>
+    </form>
+{% endblock content %}
